@@ -88,6 +88,11 @@
         .container {
             max-width: 1200px;
         }
+        .nav-link.active-link {
+            color: #ffc107 !important; /* highlight color */
+            font-weight: 700;
+            border-bottom: 2px solid #ffc107; /* optional underline for better effect */
+        }
     </style>
 </head>
 <body>
@@ -126,6 +131,16 @@
                                 </li>
                             @endif
                         @else
+                          <li class="nav-item">
+                                   <a class="nav-link {{ request()->routeIs('home') ? 'active-link' : '' }}" href="{{ route('home') }}"> Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('categories.*') ? 'active-link' : '' }}" href="{{ route('categories.index') }}">Category</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('products.*') ? 'active-link' : '' }}" href="{{ route('products.index') }}">Product</a>
+                                </li>
+                                
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" v-pre>
                                     <span style="background:#ffc107;color:#000;padding:6px 10px;border-radius:50%;font-weight:600;margin-right:8px;">
@@ -139,11 +154,7 @@
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
-                                     <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('categories.index') }}">
-                                        Category
-                                    </a>
-                                </li>
+                              
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
