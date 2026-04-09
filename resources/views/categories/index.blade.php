@@ -15,14 +15,14 @@
 @endif
 
         <tr>
-            <th>ID</th>
+            
             <th>Name</th>
             <th>Action</th>
         </tr>
 
         @foreach($categories as $cat)
         <tr>
-            <td>{{ $cat->id }}</td>
+
             <td>{{ $cat->name }}</td>
             <td>
                 <a href="{{ route('categories.edit', $cat->id) }}" class="btn btn-warning">Edit</a>

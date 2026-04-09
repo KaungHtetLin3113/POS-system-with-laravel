@@ -17,9 +17,12 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <style>
+         
         body {
-            font-family: 'Nunito', sans-serif;
+              font-family: 'Poppins', sans-serif;
             background: #f5f7fa;
+            height: 100vh;
+            margin: 0;
         }
 
         /* Navbar Modern Style */
@@ -141,7 +144,7 @@
                                     <a class="nav-link {{ request()->routeIs('products.*') ? 'active-link' : '' }}" href="{{ route('products.index') }}">Product</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ request()->routeIs('cart.*') ? 'active-link' : '' }}" href="{{ route('cart.index') }}">Cart
+                                    <a class="nav-link {{ request()->routeIs('cart.*') ? 'active-link' : '' }}" href="{{ route('cart.index') }}">🛒Cart
                                      <!-- 🔴 BADGE -->
                                      @if($cartCount > 0)
                                     <span class="badge bg-danger ms-1">{{ $cartCount }}</span>
