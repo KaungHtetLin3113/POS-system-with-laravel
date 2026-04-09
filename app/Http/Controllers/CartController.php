@@ -54,6 +54,7 @@ class CartController extends Controller
 
         return view('cart.index', compact('carts', 'grandTotal'));
     }
+    // increase function
     public function increase($id)
     {
         $cart = Cart::findOrFail($id);
@@ -72,6 +73,8 @@ class CartController extends Controller
 
         return back();
     }
+
+    // decrease function
     public function decrease($id)
     {
         $cart = Cart::findOrFail($id);
@@ -90,6 +93,8 @@ class CartController extends Controller
 
         return back();
     }
+
+    // remove function
     public function remove($id)
     {
         $cart = Cart::findOrFail($id);

@@ -60,13 +60,12 @@
                    
  @if(session('success'))
 <script>
-    
     Swal.fire({
         icon: 'success',
         title: 'Success',
         text: "{{ session('success') }}",
         timer: 2000,
-        showConfirmButton: true
+        showConfirmButton: false
     });
 </script>
 @endif
@@ -79,21 +78,4 @@
 
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    
-function confirmDelete(id) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "This category will be deleted!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#198754',
-        cancelButtonColor: '#dc3545',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.getElementById('delete-form-' + id).submit();
-        }
-    });
-}
-</script>
+<script src="javascript/function.js"></script>
