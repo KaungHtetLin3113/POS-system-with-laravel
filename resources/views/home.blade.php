@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Point POS</title>
+    <title>P.P POS</title>
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -109,7 +109,7 @@
 
         <!-- Right Text -->
         <div class="col-md-6 right-side">
-            <h1 class="title">Welcome to PowerPoint POS</h1>
+            <h1 class="title">Welcome to P.P POS</h1>
             <p class="subtitle">
                 Smart and modern Point of Sale system for managing your electronic and commodity business efficiently.
             </p>

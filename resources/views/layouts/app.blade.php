@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('Power Point', 'Power Point') }}</title>
+    <title>{{ config('P.P', 'P.P') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -103,7 +103,7 @@
         <nav class="navbar navbar-expand-md shadow">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('Power Point', 'Power Point') }}
+                    {{ config('P.P', 'P.P') }}
                 </a>
 
                 <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
