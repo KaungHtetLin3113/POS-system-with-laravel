@@ -11,26 +11,41 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Image</th>
             <th>Name</th>
             <th>Price</th>
             <th>Stock</th>
             <th>Category</th>
-            <th>Image</th>
+         
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach($products as $product)
         <tr>
+             <td>
+                @if($product->image)
+                    <img src="{{ asset('images/'.$product->image) }}" width="80">
+                @endif
+            </td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->stock }}</td>
             <td>{{ $product->category->name }}</td>
+           
             <td>
-                @if($product->image)
-                    <img src="{{ asset('images/'.$product->image) }}" width="50">
-                @endif
+                  <!-- ✅ ADD TO CART FORM HERE -->
+        <form action="{{ route('cart.add') }}" method="POST">
+            @csrf
+
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+            <input type="hidden" name="qty" value="1" min="1" class="form-control mb-2">
+
+            <button class="btn btn-success">Add to Cart</button>
+        </form>
             </td>
+
             <td>
                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
 

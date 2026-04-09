@@ -140,7 +140,15 @@
                                 <li class="nav-item">
                                     <a class="nav-link {{ request()->routeIs('products.*') ? 'active-link' : '' }}" href="{{ route('products.index') }}">Product</a>
                                 </li>
-                                
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('cart.*') ? 'active-link' : '' }}" href="{{ route('cart.index') }}">Cart
+                                     <!-- 🔴 BADGE -->
+                                     @if($cartCount > 0)
+                                    <span class="badge bg-danger ms-1">{{ $cartCount }}</span>
+                                    @endif
+                                    </a>
+                                </li>
+                               
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" v-pre>
                                     <span style="background:#ffc107;color:#000;padding:6px 10px;border-radius:50%;font-weight:600;margin-right:8px;">
