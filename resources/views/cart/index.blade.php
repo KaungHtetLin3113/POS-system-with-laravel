@@ -57,10 +57,17 @@
                 </td>
             </tr>
             @endforeach
+            
         </tbody>
     </table>
 
     <!-- ✅ GRAND TOTAL -->
     <h4 class="text-end">Grand Total: {{ $grandTotal }}</h4>
 </div>
+<form action="{{ route('checkout') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn btn-primary w-100">
+        Checkout (Save Order)
+    </button>
+</form>
 @endsection

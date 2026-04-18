@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+// use App\Http\Controllers\OrderItem;
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\OrderItem;
 
 class CartController extends Controller
 {
     public function add(Request $request)
     {
+        // dd(session('cart'));
         $product = Product::findOrFail($request->product_id);
         $qty = $request->qty;
 
@@ -107,5 +112,50 @@ class CartController extends Controller
         $cart->delete();
 
         return back()->with('success', 'Item removed');
+    }
+    // Check Out order
+    public function checkout()
+    {
+        $cartItems = Cart::all();
+
+        // ❌ No cart
+        if ($cartItems->isEmpty()) {
+            return back()->with('error', 'Cart is empty');
+        }
+
+        // ✅ Calculate total
+        $total = 0;
+
+        foreach ($cartItems as $item) {
+            $total += $item->total;
+        }
+
+        // 🔥 STEP 1: Create Order
+        $order = Order::create([
+            'total' => $total
+        ]);
+
+        // 🔥 STEP 2: Save Order Items
+        foreach ($cartItems as $item) {
+
+            OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => $item->product_id,
+                'qty' => $item->qty,
+                'price' => $item->price
+            ]);
+
+            // 🔥 Reduce stock
+            $product = Product::find($item->product_id);
+            if ($product) {
+                $product->stock -= $item->qty;
+                $product->save();
+            }
+        }
+
+        // 🔥 STEP 3: Clear Cart
+        Cart::truncate();
+
+        return back()->with('success', 'Order saved successfully!');
     }
 }
